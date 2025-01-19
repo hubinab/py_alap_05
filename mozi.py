@@ -10,12 +10,12 @@ latogatottsag = 0
 for i in range(len(szotarlista)):
     latogatottsag += int(szotarlista[i]["latogatas"])
 
-print(f"1.feladat: A magyar mozik átlagos látogatottsága: {round(latogatottsag/1000,2)} millió néző")
+print(f"1.feladat: A magyar mozik átlagos látogatottsága: {latogatottsag/len(szotarlista)/1000:.2f} millió néző")
 
 kettootven = 0
 
 for i in range(len(szotarlista)):
-    if int(szotarlista[i]["eloadas"]) >= 250:
+    if int(szotarlista[i]["film"]) >= 250:
         kettootven += 1
 
 print(f"2.feladat: Legalább 250 filmet {kettootven} évben mutattak be.")
@@ -33,12 +33,8 @@ if volte:
 legtobbmagyarindex = 0
 maxarany = 0
 for i in range(len(szotarlista)):
-    film = int(szotarlista[i]["film"]) - int(szotarlista[i]["mfilm"])
-    mfilm = int(szotarlista[i]["mfilm"])
-    arany =  mfilm/film
-    if arany > maxarany:
-        maxarany = arany
+    if maxarany < int(szotarlista[i]["mfilm"]) / int(szotarlista[i]["film"]):
+        maxarany = int(szotarlista[i]["mfilm"]) / int(szotarlista[i]["film"])
         legtobbmagyarindex = i
 
-print(f"4.feladat: Legtöbb magyar film {round(maxarany*100,2)} % - {szotarlista[legtobbmagyarindex]["ev"]}")
-
+print(f"4.feladat: Legtöbb magyar film {maxarany*100:.1f} % - {szotarlista[legtobbmagyarindex]["ev"]}")

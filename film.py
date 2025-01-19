@@ -2,8 +2,8 @@ def leggyakoribb (lista, betu):
     legtobb = 0
     elem = ""
     for i in range(len(lista)):
-        if lista[i].count(betu) > legtobb:
-            legtobb = lista[i].count(betu)
+        if lista[i].casefold().count(betu) > legtobb:
+            legtobb = lista[i].casefold().count(betu)
             elem = lista[i]
     return elem
 
